@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiker Derese | Official Website</title>
+
+<style>
+/* GENERAL */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden;
+}
+h1, h2, h3 {
+  color: gold;
+}
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+/* NAVBAR */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #111;
+  padding: 15px 0;
+  border-bottom: 1px solid gold;
+  z-index: 1000;
+}
+nav a {
+  color: gold;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+nav a:hover {
+  color: white;
+}
+
+/* SECTIONS */
+.section {
+  padding: 130px 0 80px;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 12px 25px;
+  background: gold;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+/* ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.7s ease;
+}
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeText {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* FOOTER */
+footer {
+  padding: 20px;
+  text-align: center;
+  color: gold;
+  border-top: 1px solid gold;
+}
+</style>
+
+<script>
+// scroll reveal
+window.addEventListener("scroll", () => {
+  document.querySelectorAll(".reveal").forEach(sec => {
+    let top = sec.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50) {
+      sec.classList.add("show");
+    }
+  });
+});
+</script>
+
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="section reveal">
+  <div class="container" style="text-align:center;">
+
+    <h1 style="
+      font-size: 55px;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 0 0 15px gold, 0 0 30px gold;
+      animation: fadeText 2s;
+    ">
+      Fiker Derese
+    </h1>
+
+    <p style="
+      font-size: 20px;
+      color: #ddd;
+      max-width: 700px;
+      margin: 15px auto;
+      animation: fadeText 3s;
+    ">
+      Developer • Hacker • Broker  
+      High School Student • Orthodox Church Diacon
+    </p>
+
+    <a href="#contact" class="btn" style="animation: fadeText 3.5s;">
+      Contact Me
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section reveal">
+  <div class="container">
+    <h2>About Me</h2>
+    <p style="color:#ccc; max-width:700px; margin:auto;">
+      My name is <strong style="color:gold;">Fiker Derese</strong>.  
+      I am a passionate developer, ethical hacker, and real estate broker.  
+      I help people find houses, build websites, create systems, and solve technical problems.  
+
+      I am also a proud <strong>Orthodox Tewahedo Church Diacon</strong>  
+      and a high school student working hard to become a top-level engineer and entrepreneur.
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section reveal">
+  <div class="container">
+    <h2>What I Do</h2>
+
+    <p style="color:#ccc; max-width:700px; margin:auto;">
+      ✔ Website Development  
+      ✔ Ethical Hacking & Cybersecurity  
+      ✔ House Selling & Real Estate Brokering  
+      ✔ Tech Support & Bot Setup  
+      ✔ Social Media Management  
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section reveal">
+  <div class="container">
+    <h2>Contact Me</h2>
+
+    <p style="color:#ccc;">You can reach me anytime:</p>
+
+    <a class="btn" href="https://instagram.com/darkghost_404" target="_blank">
+      Instagram: @darkghost_404
+    </a>
+
+    <br><br>
+
+    <a class="btn" href="https://t.me/FD12Ha" target="_blank">
+      Telegram: @FD12Ha
+    </a>
+
+    <br><br>
+
+    <a class="btn" href="tel:+251989259319">
+      Call: 0989 259 319
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2025 — Developed by Fiker Derese
