@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cyber Terminal</title>
+<style>
+body{
+  background:black;
+  color:#00ff00;
+  font-family:Courier New, monospace;
+  text-align:center;
+  margin:0;
+  overflow:hidden;
+}
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+#terminal{
+  margin:20px auto;
+  width:80%;
+  max-width:800px;
+  border:1px solid #00ff00;
+  height:300px;
+  overflow:auto;
+  padding:10px;
+  text-align:left;
+  background:rgba(0,0,0,0.8);
+}
+input{
+  background:black;
+  color:#00ff00;
+  border:1px solid #00ff00;
+  padding:10px;
+  width:250px;
+}
+button{
+  background:black;
+  color:#00ff00;
+  border:1px solid #00ff00;
+  padding:10px 20px;
+  cursor:pointer;
+}
+#progressBar{
+  width:80%;
+  max-width:800px;
+  margin:auto;
+  background:#111;
+  border:1px solid #00ff00;
+  height:20px;
+}
+#progress{
+  width:0%;
+  height:100%;
+  background:#00ff00;
+}
+#final{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:70px;
+  font-weight:bold;
+  color:#00ff00;
+  display:none;
+  text-shadow:0 0 20px #00ff00;
+}
+#owner{
+  position:fixed;
+  bottom:10px;
+  width:100%;
+  font-size:14px;
+  opacity:0.7;
+}
+</style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<h1>CYBER TERMINAL</h1>
+
+<h3>🔐 Social Media Scan</h3>
+<div>Telegram Analysis</div>
+<div>Instagram Analysis</div>
+<div>TikTok Analysis</div>
+
+<h3>🖥 Network Scanner</h3>
+<div>WiFi Scan</div>
+
+<br>
+<input id="username" placeholder="Enter victim username (@username)">
+<br><br>
+<button onclick="startScan()">Start Scan</button>
+
+<br><br>
+<div id="progressBar">
+  <div id="progress"></div>
+</div>
+
+<div id="terminal"></div>
+<div id="final"></div>
+<div id="owner">
+Owner: Fiker | Cyber UI Experiment
+</div>
+
+<script>
+// MATRIX BACKGROUND
+const canvas=document.getElementById("matrix")
+const ctx=canvas.getContext("2d")
+canvas.height=window.innerHeight
+canvas.width=window.innerWidth
+const letters="01ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const matrix=letters.split("")
+const fontSize=16
+const columns=canvas.width/fontSize
+const drops=[]
+for(let x=0;x<columns;x++) drops[x]=1
+function draw(){
+  ctx.fillStyle="rgba(0,0,0,0.05)"
+  ctx.fillRect(0,0,canvas.width,canvas.height)
+  ctx.fillStyle="#0F0"
+  ctx.font=fontSize+"px monospace"
+  for(let i=0;i<drops.length;i++){
+    const text=matrix[Math.floor(Math.random()*matrix.length)]
+    ctx.fillText(text,i*fontSize,drops[i]*fontSize)
+    if(drops[i]*fontSize>canvas.height && Math.random()>0.975) drops[i]=0
+    drops[i]++
+  }
+}
+setInterval(draw,35)
+
+// RANDOM DATA
+function randomIP(){
+  return Math.floor(Math.random()*255)+"."+Math.floor(Math.random()*255)+"."+Math.floor(Math.random()*255)+"."+Math.floor(Math.random()*255)
+}
+function randomLocation(){
+  const cities=["Addis Ababa","Nairobi","London","Dubai","Tokyo","New York"]
+  return cities[Math.floor(Math.random()*cities.length)]
+}
+
+// SCAN FUNCTION
+function startScan(){
+  const name=document.getElementById("username").value
+  const terminal=document.getElementById("terminal")
+  const progress=document.getElementById("progress")
+  const final=document.getElementById("final")
+
+  // VALIDATE USERNAME STARTS WITH @
+  if(!name.startsWith("@")){
+    terminal.innerHTML="❌ ERROR: Username must start with @ symbol<br>Example: @username"
+    return
+  }
+
+  terminal.innerHTML=""
+  progress.style.width="0%"
+  final.style.display="none"
+
+  const ip=randomIP()
+  const city=randomLocation()
+
+  // LONG FAKE PROCESS FOR FUN
+  const lines=[
+    "Initializing cyber terminal...",
+    "Loading security modules...",
+    "Connecting to secure network...",
+    "Target username: "+name,
+    "Detected IP address: "+ip,
+    "Approximate location: "+city,
+    "Scanning Telegram nodes...",
+    "Decrypting Telegram data...",
+    "Analyzing Instagram activity...",
+    "Decrypting Instagram metadata...",
+    "Scanning TikTok...",
+    "Decrypting TikTok data...",
+    "Scanning WiFi network...",
+    "Decrypting WiFi packets...",
+    "Analyzing system vulnerabilities...",
+    "Generating final security report...",
+    "Encrypting data...",
+    "Uploading to secure server...","Finalizing scan..."
+  ]
+
+  let i=0
+  const scan=setInterval(function(){
+    if(i<lines.length){
+      terminal.innerHTML+=lines[i]+"<br>"
+      terminal.scrollTop=terminal.scrollHeight
+      i++
+    }else{
+      clearInterval(scan)
+      setTimeout(function(){
+        final.style.display="block"
+        final.innerHTML="⚠️ SYSTEM OVERRIDE ⚠️<br>RELAX 😎<br>THIS IS JUST A PRANK"
+      },1500)
+    }
+  },1500) // 1.5 sec per line = long process
+
+  // SLOW PROGRESS BAR
+  let width=0
+  const load=setInterval(function(){
+    if(width>=100){
+      clearInterval(load)
+    }else{
+      width++
+      progress.style.width=width+"%"
+    }
+  },200) // slower for funny effect
+}
+</script>
+
+</body>
+</html>
